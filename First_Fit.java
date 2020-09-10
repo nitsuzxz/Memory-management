@@ -10,7 +10,7 @@ public class First_Fit
 	    ArrayList<Integer> results = new ArrayList<Integer>();
 	     
         Scanner input= new Scanner(System.in);
-        int total_memory,total_sagment,memory_val,segment_val;
+        int total_memory,total_sagment,memory_val,segment_val,new_sagment_value;
 	  
 	    System.out.println("Please enter total number of memory");
 	    
@@ -24,10 +24,7 @@ public class First_Fit
 	         
 	    }
 	    
-	    //foreach in java
-	    //for(int i: process){
-	    //    System.out.println(i);
-	    //}
+	
 	    
 	    System.out.println("Please enter total number of memory sagment");
 	    
@@ -41,6 +38,27 @@ public class First_Fit
 	         
         }
         
+        for(int i=0;i<memory.size(); i++){
+
+            for(int j=0; j<segment.size();j++){
+                
+                if(memory.get(i)<segment.get(j)){
+                    
+                  
+                    new_sagment_value= segment.get(j) - memory.get(i);
+                    segment.set(j,new_sagment_value);
+                    j=segment.size();
+
+                }
+            }
+
+        }
+
+
+            //foreach in java
+	    // for(int i: segment){
+	    //    System.out.println(i);
+	    // }
         input.close(); //to avoid memory leakage
 	 
 	    
