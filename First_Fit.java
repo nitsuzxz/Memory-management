@@ -35,7 +35,6 @@ public class First_Fit
 		}
 		
 		System.out.println("Please enter total number of memory");
-	    
 	    total_memory=input.nextInt();
 	    
 	    for(int i=0; i< total_memory; i++){
@@ -58,6 +57,7 @@ public class First_Fit
 
 					Data memory_data=new Data( memory.get(i),"Occupied");  
 					memorySegment.add(j,memory_data);
+					
 					Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
 					memorySegment.set((j+1),memory_data_update);
 		
@@ -66,6 +66,7 @@ public class First_Fit
 				}
 			}		
 		}
+
 		System.out.println("//////////////////////////////");
 		for(Data n : memorySegment)
 		{
