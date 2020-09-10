@@ -45,33 +45,34 @@ public class First_Fit
 	         memory.add(memory_val);
 	         
 		}
-		Iterator itr=memorySegment.iterator(); 
 
-		System.out.println("here"+ memorySegment.get(0).memory_size);
+
 
 		for(int i=0; i<memory.size(); i++){
 
 			for(int j=0; j<memorySegment.size(); j++){
-				    new_sagment_value= memorySegment.get(j).memory_size - memory.get(i);
-                    segment.set(j,new_sagment_value);
-                    j=segment.size();
 
-			}
-		}
+				if(memory.get(i) < memorySegment.get(j).memory_size && memorySegment.get(j).availability =="Unoccupied"){
+					
+					new_sagment_value= memorySegment.get(j).memory_size - memory.get(i);
 
-	
-
-
+					Data memory_data=new Data( memory.get(i),"Occupied");  
+					memorySegment.add(j,memory_data);
+					Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
+					memorySegment.set((j+1),memory_data_update);
 		
-		// while(itr.hasNext()){  
- 		// 	 Data st=(Data)itr.next();  
-		// 	 System.out.println(st.memory_size+" "+st.availability);  
-		// } 
-
-		// for(int i:memory){
-		// 	System.out.println("this is memory size"+ i);
-		// }
-
+				
+					j=memorySegment.size();
+				}
+			}		
+		}
+		System.out.println("//////////////////////////////");
+		for(Data n : memorySegment)
+		{
+			
+			System.out.println(n.memory_size+ "  "+ n.availability);
+		}
+		System.out.println("/////////////end////////////");
         input.close(); //to avoid memory leakage
 	 
 	    
