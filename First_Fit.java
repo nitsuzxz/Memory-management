@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 class Data{  
 	int memory_size;  
 	String availability;  
@@ -11,6 +10,8 @@ class Data{
   
 	}  
   }  
+
+  
 public class First_Fit
 {
 	public static void main(String[] args) {
@@ -45,8 +46,6 @@ public class First_Fit
 	         
 		}
 
-
-
 		for(int i=0; i<memory.size(); i++){
 
 			for(int j=0; j<memorySegment.size(); j++){
@@ -57,9 +56,11 @@ public class First_Fit
 
 					Data memory_data=new Data( memory.get(i),"Occupied");  
 					memorySegment.add(j,memory_data);
-					
+
 					Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
 					memorySegment.set((j+1),memory_data_update);
+
+					memory.set(i,0);
 		
 				
 					j=memorySegment.size();
@@ -73,7 +74,15 @@ public class First_Fit
 			
 			System.out.println(n.memory_size+ "  "+ n.availability);
 		}
+
 		System.out.println("/////////////end////////////");
+		
+		memory.forEach((n)->{
+			if(n!=0){
+				System.out.println("Unallocated memory is "+ n);
+			}
+		});
+		
         input.close(); //to avoid memory leakage
 	 
 	    
