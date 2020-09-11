@@ -49,7 +49,7 @@ public class Next_fit
         int counter=0;
 
 		for(int i=0; i<memory.size(); i++){
-            System.out.println("before while +"+counter);
+
             while(counter!=memorySegment.size()){
 
                        if(memory.get(i) < memorySegment.get(counter).memory_size && memorySegment.get(counter).availability =="Unoccupied"){
@@ -64,18 +64,10 @@ public class Next_fit
 
 					memory.set(i,0);
                     break;
-				
-					
                 }
-                System.out.println("counter +"+counter);
-                System.out.println("memory Segment "+memorySegment.size());
-         
                 counter++;
 
             }
-          
-
-		
 		}
 
 		System.out.println("//////////////////////////////");
