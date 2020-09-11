@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 class Data{  
 	int memory_size;  
 	String availability;  
