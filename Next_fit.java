@@ -52,7 +52,7 @@ public class Next_fit
 
             while(counter!=memorySegment.size()){
 
-                       if(memory.get(i) < memorySegment.get(counter).memory_size && memorySegment.get(counter).availability =="Unoccupied"){
+                if(memory.get(i) < memorySegment.get(counter).memory_size && memorySegment.get(counter).availability =="Unoccupied"){
 					
 					new_sagment_value= memorySegment.get(counter).memory_size - memory.get(i);
 
@@ -66,7 +66,6 @@ public class Next_fit
                     break;
                 }
                 counter++;
-
             }
 		}
 
