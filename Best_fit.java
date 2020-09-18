@@ -13,8 +13,7 @@ class Data{
   }  
 
   
-public class Best_fit
-{
+public class Best_fit{
 	public static void main(String[] args) {
 		
 		ArrayList<Data> memorySegment=new ArrayList<Data>();		   
@@ -23,7 +22,7 @@ public class Best_fit
 		
 		Scanner input= new Scanner(System.in);  
 	
-		int total_sagment,segment_val,total_memory,memory_val,new_sagment_value,minSize,x;
+		int total_sagment,segment_val,total_memory,memory_val,new_sagment_value,minSize,x = 0;
 		
 		System.out.println("Please enter total number of memory sagment");
 	    total_sagment=input.nextInt();
@@ -57,13 +56,28 @@ public class Best_fit
                 }
                 
             }
-        //get min size of memorr
-        minSize= Collections.min(filter);
-        //empty the array list
+
+            minSize= Collections.min(filter);
+
+        for(int k = 0; k < memorySegment.size(); k++){
+        
+            
+            if (memorySegment.get(k).memory_size == minSize){
+                x = k;
+
+                new_sagment_value= memorySegment.get(x).memory_size - memory.get(i);
+
+                Data memory_data=new Data( memory.get(i),"Occupied");  
+                memorySegment.add(x,memory_data);
+        
+                Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
+                memorySegment.set((x+1),memory_data_update);
+        
+                memory.set(i,0);
+           } 
+          
+        }
         filter.clear();
-        //trying to get index of memory block but unsuccessfull
-        x =memorySegment.memory_size.indexOf(minSize);
-        System.out.println("index of x" + x);
 		}
 
 		System.out.println("//////////////////////////////");
