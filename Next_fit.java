@@ -52,15 +52,21 @@ public class Next_fit
 
             while(counter!=memorySegment.size()){
 
-                if(memory.get(i) < memorySegment.get(counter).memory_size && memorySegment.get(counter).availability =="Unoccupied"){
+                if(memory.get(i) <= memorySegment.get(counter).memory_size && memorySegment.get(counter).availability =="Unoccupied"){
 					
 					new_sagment_value= memorySegment.get(counter).memory_size - memory.get(i);
 
 					Data memory_data=new Data( memory.get(i),"Occupied");  
 					memorySegment.add(counter,memory_data);
 
-					Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
-					memorySegment.set((counter+1),memory_data_update);
+		
+					if(new_sagment_value>0){
+						Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
+						memorySegment.set((counter+1),memory_data_update);
+					}else{
+						memorySegment.remove((counter+1));
+					}
+
 
 					memory.set(i,0);
                     break;

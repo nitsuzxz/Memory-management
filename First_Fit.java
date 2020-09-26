@@ -17,16 +17,19 @@ public class First_Fit
 {
 	public static void main(String[] args) {
 		
+		//Define variable //
 		ArrayList<Data> memorySegment=new ArrayList<Data>();		   
 		ArrayList<Integer> memory = new ArrayList<Integer>();
 		
 		Scanner input= new Scanner(System.in);  
 	
 		int total_sagment,segment_val,total_memory,memory_val,new_sagment_value;
-		
+		//End Define Variable//
+
+		//Prompt user to key in input//
 		System.out.println("Please enter total number of memory sagment");
 	    total_sagment=input.nextInt();
-	    
+		
 	    for(int i=0; i< total_sagment; i++){
 	        
 	        System.out.println("Please enter value for memory segment "+ (i+1));
@@ -47,22 +50,29 @@ public class First_Fit
 	         
 		}
 
+		//End Prompt User//
+
 		for(int i=0; i<memory.size(); i++){
 
 			for(int j=0; j<memorySegment.size(); j++){
 
-				if(memory.get(i) < memorySegment.get(j).memory_size && memorySegment.get(j).availability =="Unoccupied"){
+				if(memory.get(i) <= memorySegment.get(j).memory_size && memorySegment.get(j).availability =="Unoccupied"){
 					
 					new_sagment_value= memorySegment.get(j).memory_size - memory.get(i);
 
 					Data memory_data=new Data( memory.get(i),"Occupied");  
 					memorySegment.add(j,memory_data);
 
-					Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
-					memorySegment.set((j+1),memory_data_update);
+				
+
+					if(new_sagment_value>0){
+						Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
+						memorySegment.set((j+1),memory_data_update);
+					}else{
+						memorySegment.remove((j+1));
+					}
 
 					memory.set(i,0);
-		
 				
 					j=memorySegment.size();
 				}

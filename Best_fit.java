@@ -1,6 +1,8 @@
 import java.util.*;
 
 
+
+
 class Data{  
 	int memory_size;  
 	String availability;  
@@ -67,11 +69,16 @@ public class Best_fit{
 
                 new_sagment_value= memorySegment.get(x).memory_size - memory.get(i);
 
-                Data memory_data=new Data( memory.get(i),"Occupied");  
+                Data memory_data=new Data(memory.get(i),"Occupied");  
                 memorySegment.add(x,memory_data);
-        
-                Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
-                memorySegment.set((x+1),memory_data_update);
+
+				if(new_sagment_value>0){
+			        Data memory_data_update= new Data(new_sagment_value,"Unoccupied");  
+				memorySegment.set((x+1),memory_data_update);
+				}else{
+					memorySegment.remove((x+1));
+				}
+
         
                 memory.set(i,0);
            } 
